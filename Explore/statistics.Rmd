@@ -1,0 +1,39 @@
+# Analysis of Higgs dataset
+
+Load data
+```{r}
+load(file="../Processed/norm_dataset.rdata")
+training <- dataset[dataset$test==FALSE,]
+```
+
+## Signal and Background Count
+
+```{r}
+percentage_signal <- function(sc,bc) {
+  sc/(sc+bc)*100  
+}
+
+sig_count <- table(training$Label)
+
+perce <- percentage_signal(sig_count['s'],sig_count['b'])
+```
+
+In the training data `r perce` % of the event samples have the label signal.
+
+An event can have 0 to 3 jets. The distribution of the jet count is as follows:
+
+```{r}
+plot(table(training$PRI_jet_num))
+```
+
+The signal ratio is varies by jet count.
+```{r}
+tmp <- table(training$Label, training$PRI_jet_num)
+sig_percentage_per_jetcount <- data.frame(
+  jet_count = factor(0:3),
+  sig_prec  = sapply(0:3,function(i) { percentage_signal(tmp['s',i+1],tmp['b',i+1]) })
+)
+plot(sig_percentage_per_jetcount)
+```
+
+

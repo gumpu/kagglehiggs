@@ -1,3 +1,5 @@
+full_prediction.zip : full_prediction.csv
+	zip full_prediction.zip full_prediction.csv
 
 full_prediction.csv : higgs_pred_0.csv combine_predictions.r
 	R --vanilla < combine_predictions.r

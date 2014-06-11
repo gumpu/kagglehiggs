@@ -1,5 +1,7 @@
+#
 
 
+signal_fraction <- c(0.25, 0.35, 0.50, 0.30)
 
 predict_class <- function(jet_number) {
     # Load prediction made with xgboost
@@ -13,9 +15,7 @@ predict_class <- function(jet_number) {
     ix <- V2.sorted$ix
     n <- length(ix)
 
-    # TODO This needs tuning!!
-    # Only take the top 15 % as signals.
-    signals <- floor(n*0.15)
+    signals <- floor(n*signal_fraction[jet_number+1])
 
     dataset$Class <- 'b'
     dataset[ix[1:signals],"Class"] <- 's'
@@ -23,7 +23,7 @@ predict_class <- function(jet_number) {
     return(dataset)
 }
 
-all_jets <- lapply(0:3,predict_class)
+all_jets <- lapply(0:3, predict_class)
 prediction <- do.call("rbind", all_jets)
 prediction$Class <- factor(prediction$Class)
 
