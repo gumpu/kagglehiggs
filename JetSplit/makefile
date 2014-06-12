@@ -14,6 +14,6 @@ test_0.csv : split_it.r
 	R --vanilla < split_it.r
 
 clean :
-	rm -rf *.csv
-	rm -rf *.model
-
+	-rm -f *.csv
+	-rm -f *.model
+	-rm -f *.zip
