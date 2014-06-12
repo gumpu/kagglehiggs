@@ -9,8 +9,10 @@ import numpy as np
 import xgboost as xgb
 
 
+test_size_jet = [220157, 169717, 111007, 49123]
+
 def train(jet_number):
-    test_size = 550000
+    test_size = test_size_jet[jet_number]
 
     train_filename = 'training_{}.csv'.format(jet_number)
     test_filename  = 'test_{}.csv'.format(jet_number)
@@ -75,8 +77,8 @@ def train(jet_number):
     watchlist = [ (xgmat,'train') ]
 
     # Boost 120 trees
-    # num_round = 120
-    num_round = 60
+    num_round = 120
+    # num_round = 60
     print ('loading data end, start to boost trees')
     bst = xgb.train( plst, xgmat, num_round, watchlist );
 

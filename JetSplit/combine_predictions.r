@@ -1,6 +1,7 @@
 #
 
 
+# According to the training data.
 signal_fraction <- c(0.25, 0.35, 0.50, 0.30)
 
 predict_class <- function(jet_number) {
