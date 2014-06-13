@@ -4,18 +4,19 @@ require(randomForest)
 
 load(file="../Processed/norm_dataset.rdata")
 
-# Give NAs a value. Except for the Label NA,
+# Give NAs a value. Except for the Label NAs,
 # otherwise randomForest will complain in the predict phase.
-ll <- dataset$Label
+response_label <- dataset[dataset$test==FALSE, "Label"]
 dataset$Label <- NULL
 dataset[is.na(dataset)] <- -999
-dataset$Label <- ll
 
 feature_subset <- grep("PRI|DER", colnames(dataset), value=TRUE)
-training <- dataset[dataset$test == FALSE, c(feature_subset, "Label")]
+training <- dataset[dataset$test == FALSE, feature_subset]
 
 # Train
-model <- randomForest(Label~., training, ntree=50, do.trace=TRUE)
+model <- randomForest(
+    x=training, y=response_label, 
+    ntree=50, do.trace=TRUE)
 
 
 # Predict
