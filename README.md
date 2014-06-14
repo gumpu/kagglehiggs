@@ -1,4 +1,5 @@
 kagglehiggs
 ===========
 
-Kaggle Higgs
+All the code for the Higgs competition at Kaggle.
+
