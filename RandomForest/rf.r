@@ -57,11 +57,10 @@ weight <- dataset[dataset$test == FALSE, "Weight"]
 s <- sum(weight[(prediction=='s') & (response_label=='s')])
 b <- sum(weight[(prediction=='s') & (response_label=='b')])
 br <- 10
-AMS1 <- sqrt(2*((s+b+br)*log(1+s/(b+br))-s))
+ams <- sqrt(2*((s+b+br)*log(1+s/(b+br))-s))
 
-print(sprintf("Training AMS %f", AMS1))
+print(sprintf("Training AMS %f", ams))
 
 # Scored     2.87001
 #            2.76866   (Only jet_num and DER)
-# TODO Compute AMS
 #
