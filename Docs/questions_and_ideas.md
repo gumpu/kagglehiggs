@@ -4,6 +4,10 @@
 
 1. How does xgboost use the weights in its algorithm?
 1. How are the missing values distributed over the various factors?
+1. Why is the cutoff point for xgboost 15% signal, while the training
+   data has 35% signal?
+1. How does boosting work?
+
 
 ## Closed Questions
 

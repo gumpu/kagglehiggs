@@ -66,7 +66,11 @@ Score 2.77520
 Jet split, 120 rounds of xgboost, weight adjusted according to testset size
 Kaggle Score 3.06152
 
+## Random Forest (13 Jun 2014)
 
+Random Forest (R version) with 50 trees scores a 2.87001.
+Samem but not with only all DER-xx factors and PRI-jet-num as factors
+scores a 2.76866.
 
 
 vi: spell spl=en ft=markdown
