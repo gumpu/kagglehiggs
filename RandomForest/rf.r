@@ -39,7 +39,7 @@ kaggle_prediction <- kaggle_prediction[sorted_prob$ix,]
 kaggle_prediction$RankOrder <- 1:nrow(kaggle_prediction)
 
 # Save prediction to file
-write.table(kaggle_prediction, file="full_prediction.csv",
+write.table(kaggle_prediction, file="test_prediction.csv",
     sep=",", row.names=FALSE, quote=FALSE)
 
 #=============================================================================

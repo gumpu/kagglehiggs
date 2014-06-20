@@ -1,8 +1,8 @@
 
-full_prediction.zip : full_prediction.csv
-	zip full_prediction.zip full_prediction.csv
+test_prediction.zip : test_prediction.csv
+	zip test_prediction.zip test_prediction.csv
 
-full_prediction.csv : rf.r
+test_prediction.csv : rf.r
 	time R --vanilla < rf.r
 
 clean :

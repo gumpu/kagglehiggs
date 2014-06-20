@@ -21,4 +21,5 @@ response_label <- response_label[idx]
 # Train
 model <- svm(x=training, y=response_label)
 
+print(model)
 
