@@ -2,12 +2,13 @@
 # make prediction 
 import sys
 import numpy as np
+import xgboost as xgb
 
 # path to where the data lies
-dpath = '../Processed'
+dpath     = '../Processed'
 
 modelfile = 'higgs.model'
-outfile = 'higgs.pred.csv'
+outfile   = 'test_prediction.csv'
 # make top 15% as positive 
 threshold_ratio = 0.15
 
@@ -45,7 +46,7 @@ for k, v in res:
     ntot += 1
 fo.close()
 
-print ('finished writing into prediction file')
+print('finished writing into prediction file')
 
 
 
