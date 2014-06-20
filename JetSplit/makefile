@@ -1,7 +1,7 @@
-full_prediction.zip : full_prediction.csv
-	zip full_prediction.zip full_prediction.csv
+test_prediction.zip : test_prediction.csv
+	zip test_prediction.zip test_prediction.csv
 
-full_prediction.csv : higgs_pred_0.csv combine_predictions.r
+test_prediction.csv : higgs_pred_0.csv combine_predictions.r
 	R --vanilla < combine_predictions.r
 
 higgs_pred_0.csv : higgs-pred.py higgs_0.model

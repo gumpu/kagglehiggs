@@ -43,6 +43,6 @@ kaggle_prediction <- data.frame(
 )
 
 
-write.table(kaggle_prediction, file="full_prediction.csv", 
+write.table(kaggle_prediction, file="test_prediction.csv", 
     sep=",", row.names=FALSE, quote=FALSE)
 
