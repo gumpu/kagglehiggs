@@ -2,7 +2,7 @@
 test_prediction.zip : test_prediction.csv
 	zip test_prediction.zip test_prediction.csv
 
-test_prediction.csv : rf.r
+train_prediction.csv test_prediction.csv : rf.r
 	time R --vanilla < rf.r
 
 clean :
