@@ -14,12 +14,12 @@ threshold_ratio = 0.15
 
 # load in training data, directly use numpy
 dtest = np.loadtxt( dpath+'/test.csv', delimiter=',', skiprows=1 )
-data   = dtest[:,1:31]
-idx = dtest[:,0]
+data  = dtest[:,1:31]
+idx   = dtest[:,0]
 
-print ('finish loading from csv ')
+print('Loaded test set')
 xgmat = xgb.DMatrix( data, missing = -999.0 )
-bst = xgb.Booster({'nthread':16})
+bst   = xgb.Booster({'nthread':16})
 bst.load_model( modelfile )
 ypred = bst.predict( xgmat )
 
@@ -46,7 +46,27 @@ for k, v in res:
     ntot += 1
 fo.close()
 
-print('finished writing into prediction file')
+print('Finished writing prediction for testset to file')
 
+
+#==============================================================================
+# Also save a prediction for the training set
+
+dtrain = np.loadtxt( 
+        dpath+'/training.csv', delimiter=',', 
+        skiprows=1, 
+        converters={32: lambda x:int(x=='s'.encode('utf-8')) } )
+print('Loaded training set')
+
+data   = dtrain[:,1:31]
+xgmat = xgb.DMatrix( data, missing = -999.0 )
+bst   = xgb.Booster({'nthread':16})
+bst.load_model( modelfile )
+ypred = bst.predict( xgmat )
+with open("train_prediction.cvs", "w") as outf:
+    outf.write("prediction\n")
+    for p in ypred:
+        outf.write("{}\n".format(p))
+print('Finished writing prediction for training set to file')
 
 
