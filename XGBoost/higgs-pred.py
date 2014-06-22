@@ -63,7 +63,7 @@ xgmat = xgb.DMatrix( data, missing = -999.0 )
 bst   = xgb.Booster({'nthread':16})
 bst.load_model( modelfile )
 ypred = bst.predict( xgmat )
-with open("train_prediction.cvs", "w") as outf:
+with open("train_prediction.csv", "w") as outf:
     outf.write("prediction\n")
     for p in ypred:
         outf.write("{}\n".format(p))
