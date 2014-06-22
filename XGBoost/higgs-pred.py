@@ -66,7 +66,9 @@ ypred = bst.predict( xgmat )
 with open("train_prediction.csv", "w") as outf:
     outf.write("prediction\n")
     for p in ypred:
-        outf.write("{}\n".format(p))
+        # Only print a limited number of digits.
+        # To many digits makes R read numbers as factors.
+        outf.write("{:.5f}\n".format(p))
 print('Finished writing prediction for training set to file')
 
 
